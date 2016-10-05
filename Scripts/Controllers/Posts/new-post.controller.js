@@ -11,7 +11,9 @@ angular.module("mainModule")
             $scope.addPost = function () {
                 postsApi.addPost($scope.newPost)
                     .then(function (data) {
-                        $scope.posts.push($scope.newPost);
+                        $scope.posts.push(data);
+                        //$scope.newPost = {};
+                        //$scope.go("/");
                     });
             };
         }

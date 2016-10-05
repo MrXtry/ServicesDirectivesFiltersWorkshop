@@ -12,7 +12,8 @@ angular.module("mainModule")
 
             postsApi.getPosts()
                 .then(function (data) {
-                    $scope.posts = data;
+                    if (data != null)
+                        $scope.posts = data;
                 });
 
             $scope.go = function (url) {
