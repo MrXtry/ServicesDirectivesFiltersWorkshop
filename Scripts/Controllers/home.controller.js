@@ -6,11 +6,16 @@ angular.module("mainModule")
         "postsApi",
         function ($scope, postsApi) {
             $scope.title = "Home";
-            $scope.posts = [];
+            
+            $scope.deletePost = function (post) {
+                postsApi.deletePost(post.id)
+                    .then(function () {
+                        var index = $scope.posts.map(function (post) {
+                            return post.id;
+                        }).indexOf(post.id);
 
-            postsApi.getPosts()
-                .then(function (data) {
-                    $scope.posts = data;
-                });
+                        $scope.posts.splice(index, 1);
+                    });
+            }
         }
     ]);
